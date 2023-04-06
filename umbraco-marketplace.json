@@ -1,0 +1,14 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json", 
+    "AuthorDetails": {
+      "Name": "Nik Rimington",
+      "ImageUrl": "https://github.com/NikRimington.png"
+    },
+    "Category": "Editor Tools",
+    "Description": "",
+    "LicenseTypes": [ "Free" ],
+    "IssueTrackerUrl": "https://github.com/NikRimington/HCS.Media.AltDescriptionManager/issues",
+    "PackageType": "Package",
+    "Tags": ["Media", "Management", "Editor Tools", "Dashboard", "Tree Handler"],
+    "Title": "HCS.Media.AltDescriptionManager"
+  }
