@@ -1,0 +1,27 @@
+<div ng-controller="hcs.media.altDescriptionManagerController as vm">
+  <uui-box headline="Media Management - Missing Descriptions">
+      Some content of this box, appended in the default slot.
+  </uui-box>
+
+  <uui-table aria-label="Example table" aria-describedby="#some-element-id" style="margin-top: 25px">
+
+      <!-- Apply styles to the uui-table-column to style the columns. You must have the same number of this elements as you have columns -->
+      <uui-table-column style="width: 30%;"></uui-table-column>
+      <uui-table-column style="width: 70%;"></uui-table-column>
+
+      <uui-table-head>
+        <uui-table-head-cell>Item</uui-table-head-cell>
+        <uui-table-head-cell></uui-table-head-cell>
+      </uui-table-head>
+
+      <uui-table-row ng-repeat="item in vm.items">
+        <uui-table-cell>
+          <uui-card-media ng-name="item.name">
+            <img src="https://placedog.net/1447/?random" alt="" />
+          </uui-card-media>
+        </uui-table-cell>
+        <uui-table-cell>Cell 2</uui-table-cell>
+      </uui-table-row>
+
+  </uui-table>
+</div>

@@ -4,6 +4,7 @@ namespace HCS.Media.AltDescriptionManager
 {
     internal class ManifestFilter : IManifestFilter
     {
+        private const string Base = "/App_Plugins/HCS.Media.AltDescriptionManager/";
         public void Filter(List<PackageManifest> manifests)
         {
             var assembly = typeof(ManifestFilter).Assembly;
@@ -14,11 +15,11 @@ namespace HCS.Media.AltDescriptionManager
                 Version = assembly.GetName()?.Version?.ToString(3) ?? "0.1.0",
                 AllowPackageTelemetry = true,
                 Scripts = new string[] {
-                    // "files here"
+                    Base + "HCS.Media.AltDescriptionManagerController.js"
                 },
                 Stylesheets = new string[]
                 {
-                    "/App_Plugins/HCS.Media.AltDescriptionManager/HCS.Media.AltDescriptionManager.css"
+                    Base + "HCS.Media.AltDescriptionManager.css"
                 }
             });
         }
