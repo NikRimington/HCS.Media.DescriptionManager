@@ -6,7 +6,8 @@
   <uui-table aria-label="Example table" aria-describedby="#some-element-id" style="margin-top: 25px">
 
       <!-- Apply styles to the uui-table-column to style the columns. You must have the same number of this elements as you have columns -->
-      <uui-table-column style="width: 30%;"></uui-table-column>
+      <uui-table-column style="width: 25%;"></uui-table-column>
+      <uui-table-column style="width: 5%;"></uui-table-column>
       <uui-table-column style="width: 70%;"></uui-table-column>
 
       <uui-table-head>
@@ -14,13 +15,31 @@
         <uui-table-head-cell></uui-table-head-cell>
       </uui-table-head>
 
-      <uui-table-row ng-repeat="item in vm.items">
+      <uui-table-row ng-repeat="item in vm.items track by $index">
         <uui-table-cell>
-          <uui-card-media ng-name="item.name">
-            <img src="https://placedog.net/1447/?random" alt="" />
+          <uui-card-media name="{{item.name}}">
+            <img src="{{item.url}}" alt="image with missing alt description" />
           </uui-card-media>
         </uui-table-cell>
-        <uui-table-cell>Cell 2</uui-table-cell>
+        <uui-table-cell></uui-table-cell>
+        <uui-table-cell>
+          <uui-form>
+              <input type="hidden" value="{{$index}}" />
+              <uui-form-layout-item>
+                <uui-label for="description-{{$index}}" slot="label" >Description Text</uui-label>
+                <uui-input id="description-{{$index}}" name="description" type="text" label="Text" required=""
+                ng-on-change="vm.changed($index, $event)"></uui-input>
+              </uui-form-layout-item>
+
+              <div>                
+                <uui-button id="submit-{{$index}}" type="button" 
+                  label="Save description" look="primary"
+                  ng-on-click="vm.save($index)">
+                  Save
+                </uui-button>
+              </div>
+          </uui-form>
+        </uui-table-cell>
       </uui-table-row>
 
   </uui-table>

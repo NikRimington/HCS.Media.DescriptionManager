@@ -1,4 +1,4 @@
-namespace HCS.Media.AltDescriptionManager.Core;
+namespace HCS.Media.AltDescriptionManager.Core.Models;
 
 public class OptionsModel
 {    

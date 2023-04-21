@@ -1,3 +1,4 @@
+using HCS.Media.AltDescriptionManager.Core.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
