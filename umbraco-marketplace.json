@@ -7,8 +7,8 @@
     "Category": "Editor Tools",
     "Description": "",
     "LicenseTypes": [ "Free" ],
-    "IssueTrackerUrl": "https://github.com/NikRimington/HCS.Media.AltDescriptionManager/issues",
+    "IssueTrackerUrl": "https://github.com/NikRimington/HCS.Media.DescriptionManager/issues",
     "PackageType": "Package",
     "Tags": ["Media", "Management", "Editor Tools", "Dashboard", "Tree Handler"],
-    "Title": "HCS.Media.AltDescriptionManager"
+    "Title": "HCS.Media.DescriptionManager"
   }

@@ -1,0 +1,54 @@
+<div ng-controller="hcs.media.DescriptionManagerController as vm">
+  <uui-box headline="Media Management - Missing Descriptions">
+      Add missing descriptions to media items from this centralised dashboard. A maximum of 25 items will show at any one time.
+  </uui-box>
+
+  <uui-box style="margin-top: 25px">
+    <uui-loader-bar animationDuration="1.5" style="color: black" ng-show="vm.loading"></uui-loader-bar>
+
+    <uui-table aria-label="Example table" aria-describedby="#some-element-id" ng-show="!vm.loading">
+
+        <!-- Apply styles to the uui-table-column to style the columns. You must have the same number of this elements as you have columns -->
+        <uui-table-column style="width: 33%;"></uui-table-column>        
+        <uui-table-column style="width: 33%;"></uui-table-column>
+        <uui-table-column style="width: 33%;"></uui-table-column>
+
+        <uui-table-head>
+          <uui-table-head-cell>Showing: {{vm.pageSize}} of {{vm.totalItems}}</uui-table-head-cell>
+          <uui-table-head-cell></uui-table-head-cell>
+          <uui-table-head-cell></uui-table-head-cell>
+        </uui-table-head>
+
+        <div role="row" style="display: table-row;
+        position: relative;
+        outline-offset: -3px;" selectable="false" ng-repeat="row in vm.items track by $index">
+          <uui-table-cell ng-repeat="item in row track by $index">
+            <uui-box headline="{{item.name}}">
+              <div ng-show="vm.isImage(item)">
+                <img src="{{item.url}}" alt="image with missing alt description" style="display:block; margin-left:auto; margin-right:auto; max-width:250px; max-height: 250px;" />
+              </div>
+              <uui-form>
+                <input type="hidden" value="{{$parent.$index}}|{{$index}}" />
+                <uui-form-layout-item>
+                  <uui-label for="description-{{$parent.$index}}-{{$index}}" slot="label" >Description Text</uui-label>
+                  <input id="description-{{$parent.$index}}-{{$index}}" name="description" type="text" 
+                    label="Text" required="" style="width:100%"
+                    ng-on-change="vm.changed($parent.$index, $index, $event)" />
+                </uui-form-layout-item>
+
+                <div>                
+                  <uui-button id="submit-{{$parent.$index}}-{{$index}}" type="button" 
+                    label="Save description" look="primary" state="{{item.state}}"
+                    ng-on-click="vm.save($parent.$index, $index)">
+                    Save description
+                  </uui-button>
+                </div>
+              </uui-form>
+            </uui-box>
+          </uui-table-cell>
+        </div>
+
+    </uui-table>
+
+  </uui-box>
+</div>

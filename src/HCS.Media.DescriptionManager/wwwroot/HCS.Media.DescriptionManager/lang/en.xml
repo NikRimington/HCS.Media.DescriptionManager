@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en" intName="English (UK)" localName="English (UK)" lcid="" culture="en-GB">
+    <area alias="HCS.Media.DescriptionManager">
+        <key alias="dashboard">Missing Descriptions</key>
+    </area>
+    <area alias="dashboardTabs">
+		<key alias="HCS.Media.DescriptionManager">Missing Descriptions</key>
+	</area>
+</language>
