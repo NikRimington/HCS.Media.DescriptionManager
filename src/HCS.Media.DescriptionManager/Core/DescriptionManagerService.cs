@@ -28,9 +28,9 @@ public class DescriptionManagerService : IDescriptionManagerService
         _backOfficeSecurity = backOfficeSecurity;
     }
     
-    public async Task<List<object>> GetMediaWithMissingDescriptions()
+    public async Task<List<MediaItem>> GetMediaWithMissingDescriptions()
     {
-        var res = new List<object>();
+        var res = new List<MediaItem>();
         if (!_umbracoContextAccessor.TryGetUmbracoContext(out var umbracoContext) || umbracoContext?.Media == null) return res;
         if(_options.Value.DescriptionManager.Count == 0) return res;
         
@@ -43,7 +43,7 @@ public class DescriptionManagerService : IDescriptionManagerService
 
     }
 
-    public async Task<bool> SaveDescription(Guid key, string description)
+    public async Task<bool> SaveDescription(int key, string description)
     {
         var item = _mediaService.GetById(key);
         if(item == null) return false;
@@ -52,16 +52,16 @@ public class DescriptionManagerService : IDescriptionManagerService
         {
             item.SetValue(propertyAlias, description);
 
-            var result = await Task.FromResult(_mediaService.Save(item, _backOfficeSecurity.BackOfficeSecurity?.CurrentUser?.Id ?? -1 ));
+            var result = _mediaService.Save(item, _backOfficeSecurity.BackOfficeSecurity?.CurrentUser?.Id ?? -1 );
 
-            return result.Success;
+            return await Task.FromResult(result.Success);
 
         }
 
         return false;
     }
 
-    private void ProcessMediaItem(List<object> res, IPublishedContent item)
+    private void ProcessMediaItem(List<MediaItem> res, IPublishedContent item)
     {
         
         if(_options.Value.DescriptionManager.TryGetValue(item.ContentType.Alias, out var propertyAlias) 
@@ -69,8 +69,8 @@ public class DescriptionManagerService : IDescriptionManagerService
         
             if(!item.HasValue(propertyAlias)) 
 
-                res.Add(new {
-                    key = item.Key,
+                res.Add(new MediaItem {
+                    key = item.Id,
                     name = item.Name,
                     url = item.Url() + "?height=250"
                 });

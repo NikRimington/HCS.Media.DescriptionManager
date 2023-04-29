@@ -1,8 +1,10 @@
+using HCS.Media.DescriptionManager.Core.Models;
+
 namespace HCS.Media.DescriptionManager.Core;
 
 public interface IDescriptionManagerService
 {
-    Task<List<object>> GetMediaWithMissingDescriptions();
-    Task<bool> SaveDescription(Guid mediaId, string description);
+    Task<List<MediaItem>> GetMediaWithMissingDescriptions();
+    Task<bool> SaveDescription(int mediaId, string description);
 }
 

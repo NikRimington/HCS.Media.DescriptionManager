@@ -1,57 +1,69 @@
 (function () {
     "use strict";
 
-    function DescriptionManagerController($scope, $http, mediaHelper)
+    function DescriptionManagerController($scope, $http, mediaHelper, navigationService)
     {
         console.log(Umbraco.Sys.ServerVariables);
         var vm = this;
-        vm.items = [];
+        vm.data = {
+            items:[],
+            total: 0
+        };
         vm.loading = true;
-        
 
         load();
 
         function load()
-        {            
+        { 
+            vm.loading = true;
+            vm.data   
             $http.get(Umbraco.Sys.ServerVariables.HCSMedia.DescriptionApi + "Fetch").then(function (res){
-                vm.items = res.data.items;
-                vm.pageSize = res.data.pageSize;
-                vm.totalItems = res.data.total;
+                vm.data = res.data;
                 vm.loading = false;
             });
         }
 
+        vm.load = load;
         vm.save = save;
         vm.changed = changed;
         vm.isImage = isImageCheck;
 
-        function save($group, $index)
+        function save($index)
         {
-            var item = vm.items[$group][$index];
+            var item = vm.data.items[$index];
             if(item == undefined) return;
 
             item.state = "waiting";
 
             $http.put(Umbraco.Sys.ServerVariables.HCSMedia.DescriptionApi + "Save",
                 {
-                  GroupIndex: $group,
                   Index: $index,
                   Description: item.description,
                   MediaId: item.key
                 }).then(function(res)
                 {
                     item.state = "success";
+                    item.btnColor = "positive";
+                    item.updated = true;
+                    var el = document.getElementById("description-form-" + res.data.index);
+                    removeFadeOut(el, 250);
+                    navigationService.syncTree({tree: 'media', path: ["-1", String(item.key)], forceReload: true});
+                    
                 }, function(res){
                     item.state = "error";
+                    item.btnColor = "negative";
+                    setTimeout(function() {
+                        item.btnColor = "default";
+                    }, 250);
                 });
 
             console.log($index);
         }
 
-        function changed($group, $index, $event)
+        function changed($index, $event)
         {
             try {
-                vm.items[$group][$index].description = $event.target.value;
+                vm.data.items[$index].description = $event.target.value;
             } catch (error) {
                 console.error(error);
             }
@@ -65,9 +77,19 @@
             }
             return item.isImage;
         }
+
+        function removeFadeOut(el, speed ) {
+            var seconds = speed/1000;
+            el.style.transition = "opacity "+seconds+"s ease";
+        
+            el.style.opacity = 0;
+            setTimeout(function() {
+                el.parentNode.removeChild(el);
+            }, speed - 5);
+        }
     }
 
 
     angular.module("umbraco").controller("hcs.media.DescriptionManagerController",
-        ['$scope', '$http', 'mediaHelper', DescriptionManagerController]);
+        ['$scope', '$http', 'mediaHelper', 'navigationService', DescriptionManagerController]);
 })();
