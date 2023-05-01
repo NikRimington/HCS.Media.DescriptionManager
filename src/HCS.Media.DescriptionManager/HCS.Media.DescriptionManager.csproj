@@ -15,7 +15,7 @@
     <Version>0.1.0</Version>
     <Authors>Nik Rimington</Authors>
     <Copyright>2023 © Nik Rimington</Copyright>
-    <PackageIcon>logo.png</PackageIcon>
+    <PackageIcon>logo.svg</PackageIcon>
     <PackageIconUrl>https://github.com/NikRimington/HCS.Media.DescriptionManager/blob/develop/docs/logo.svg</PackageIconUrl>
     <PackageProjectUrl>https://github.com/NikRimington/HCS.Media.DescriptionManager</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NikRimington/HCS.Media.DescriptionManager</RepositoryUrl>
