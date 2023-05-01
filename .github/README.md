@@ -1,5 +1,7 @@
 # HCS.Media.DescriptionManager
 
+<img src="https://github.com/NikRimington/HCS.Media.DescriptionManager/blob/develop/docs/logo.svg" alt="Description Manager Logo" width="250" align="right" />
+
 [![Downloads](https://img.shields.io/nuget/dt/HCS.Media.DescriptionManager?color=cc9900)](https://www.nuget.org/packages/HCS.Media.DescriptionManager/)
 [![NuGet](https://img.shields.io/nuget/vpre/HCS.Media.DescriptionManager?color=0273B3)](https://www.nuget.org/packages/HCS.Media.DescriptionManager)
 [![GitHub license](https://img.shields.io/github/license/NikRimington/HCS.Media.DescriptionManager?color=8AB803)](LICENSE)
@@ -57,3 +59,7 @@ By default the package will work for the following types with the following prop
 ## Contributing
 
 Contributions to this package are most welcome! Please read the [Contributing Guidelines](CONTRIBUTING.md).
+
+## Credits
+
+The logo uses [missing image](hhttps://thenounproject.com/browse/icons/term/missing-image/) from the [Noun Project](https://thenounproject.com) by [MOHAMMED SALIM](https://thenounproject.com/salim.miah24/), licensed under [CC BY 3.0 US](https://creativecommons.org/licenses/by/3.0/us/).
