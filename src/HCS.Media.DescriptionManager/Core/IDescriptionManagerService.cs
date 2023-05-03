@@ -5,6 +5,6 @@ namespace HCS.Media.DescriptionManager.Core;
 public interface IDescriptionManagerService
 {
     Task<List<MediaItem>> GetMediaWithMissingDescriptions();
-    Task<bool> SaveDescription(int mediaId, string description);
+    bool SaveDescription(int mediaId, string description);
 }
 

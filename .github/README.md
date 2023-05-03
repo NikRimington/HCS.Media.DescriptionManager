@@ -45,11 +45,13 @@ By default the package will work for the following types with the following prop
  It is possible to override the defaults, however it is not possible to override a single item, it is a case of all or nothing. To override the settings add the following to `appsettings.json`.
 
  ```json
- "HCS" : {
-    "Media" : {
-      "Image" : "altText",
-      "umbracoMediaVectorGraphics" : "title",
-      "umbracoMediaVideo" : "title"
+ "HCS": {
+    "Media":{
+      "DescriptionManager" : {
+        "Image": "altText",
+        "umbracoMediaVectorGraphics": "title",
+        "umbracoMediaVideo": "title"
+      }
     }
   }
  ```

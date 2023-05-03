@@ -1,14 +1,14 @@
 {
-    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json", 
-    "AuthorDetails": {
-      "Name": "Nik Rimington",
-      "ImageUrl": "https://github.com/NikRimington.png"
-    },
-    "Category": "Editor Tools",
-    "Description": "",
-    "LicenseTypes": [ "Free" ],
-    "IssueTrackerUrl": "https://github.com/NikRimington/HCS.Media.DescriptionManager/issues",
-    "PackageType": "Package",
-    "Tags": ["Media", "Management", "Editor Tools", "Dashboard", "Tree Handler"],
-    "Title": "HCS.Media.DescriptionManager"
-  }
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "AuthorDetails": {
+    "Name": "Nik Rimington",
+    "ImageUrl": "https://github.com/NikRimington.png"
+  },
+  "Category": "Editor Tools",
+  "Description": "Description Manager is an Umbraco v10+ plugin for helping editors quickly update media items that are missing descriptions.",
+  "LicenseTypes": [ "Free" ],
+  "IssueTrackerUrl": "https://github.com/NikRimington/HCS.Media.DescriptionManager/issues",
+  "PackageType": "Package",
+  "Tags": [ "Media", "Management", "Editor Tools", "Dashboard", "Tree Handler" ],
+  "Title": "HCS.Media.DescriptionManager"
+}

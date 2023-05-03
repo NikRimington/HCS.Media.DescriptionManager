@@ -43,19 +43,28 @@ public class DescriptionManagerService : IDescriptionManagerService
 
     }
 
-    public async Task<bool> SaveDescription(int key, string description)
+    public bool SaveDescription(int key, string description)
     {
-        var item = _mediaService.GetById(key);
-        if(item == null) return false;
+        try
+        {           
+        
+            var item = _mediaService.GetById(key);
+            if(item == null) return false;
 
-        if(_options.Value.DescriptionManager.TryGetValue(item.ContentType.Alias, out var propertyAlias))
+            if(_options.Value.DescriptionManager.TryGetValue(item.ContentType.Alias, out var propertyAlias))
+            {
+                item.SetValue(propertyAlias, description);
+
+                var result = _mediaService.Save(item, _backOfficeSecurity.BackOfficeSecurity?.CurrentUser?.Id ?? -1 );
+
+                return result.Success;
+
+            }
+
+        }
+        catch (System.Exception ex)
         {
-            item.SetValue(propertyAlias, description);
-
-            var result = _mediaService.Save(item, _backOfficeSecurity.BackOfficeSecurity?.CurrentUser?.Id ?? -1 );
-
-            return await Task.FromResult(result.Success);
-
+            _logger.LogError(ex, "DescriptionManager - unable to update description for media item {key}", key);
         }
 
         return false;
@@ -67,7 +76,7 @@ public class DescriptionManagerService : IDescriptionManagerService
         if(_options.Value.DescriptionManager.TryGetValue(item.ContentType.Alias, out var propertyAlias) 
             && !string.IsNullOrWhiteSpace(propertyAlias)) 
         
-            if(!item.HasValue(propertyAlias)) 
+            if(item.ContentType.PropertyTypes.Any(p => p.Alias == propertyAlias) && !item.HasValue(propertyAlias)) 
 
                 res.Add(new MediaItem {
                     key = item.Id,

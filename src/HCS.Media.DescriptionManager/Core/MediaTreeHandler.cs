@@ -37,8 +37,9 @@ public class MediaTreeRenderingNotificationHandler : INotificationHandler<TreeNo
             if(!options.DescriptionManager.TryGetValue(typeAlias, out var propertyAlias) || string.IsNullOrWhiteSpace(propertyAlias)) continue;
 
             if (umbracoContext.Media.GetById(nodeId) is IPublishedContent mediaItem)
-            {                
-                node.CssClasses.Add($"hcs-description-check {(!mediaItem.HasValue(propertyAlias) ? "__missing" : "__found")}");
+            {
+                if(mediaItem.ContentType.PropertyTypes.Any(p => p.Alias == propertyAlias))
+                    node.CssClasses.Add($"hcs-description-check {(!mediaItem.HasValue(propertyAlias) ? "__missing" : "__found")}");
             }
         }
     }
