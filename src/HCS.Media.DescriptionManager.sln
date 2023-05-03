@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCS.Media.DescriptionManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCS.Media.DescriptionManager.TestSite", "HCS.Media.DescriptionManager.TestSite\HCS.Media.DescriptionManager.TestSite.csproj", "{73F44BFF-F667-40DA-BF0D-39648A316021}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HCS.Media.DescriptionManager.TestSitev11", "HCS.Media.DescriptionManager.TestSiteV11\HCS.Media.DescriptionManager.TestSitev11.csproj", "{6180FAFF-CF0D-4EFA-9E0A-1F154D430641}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{73F44BFF-F667-40DA-BF0D-39648A316021}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73F44BFF-F667-40DA-BF0D-39648A316021}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73F44BFF-F667-40DA-BF0D-39648A316021}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6180FAFF-CF0D-4EFA-9E0A-1F154D430641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6180FAFF-CF0D-4EFA-9E0A-1F154D430641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6180FAFF-CF0D-4EFA-9E0A-1F154D430641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6180FAFF-CF0D-4EFA-9E0A-1F154D430641}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

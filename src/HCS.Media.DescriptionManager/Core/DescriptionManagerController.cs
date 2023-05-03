@@ -30,7 +30,7 @@ public class DescriptionManagerController : UmbracoAuthorizedApiController
     {
         
 
-        if (!_memoryCache.TryGetValue(cacheKey, out List<MediaItem> items))
+        if (!_memoryCache.TryGetValue(cacheKey, out List<MediaItem> items) || items.Count == 0)
         {
             items = await _DescriptionManagerService.GetMediaWithMissingDescriptions();
 
@@ -56,7 +56,7 @@ public class DescriptionManagerController : UmbracoAuthorizedApiController
         if((model?.Description).IsNullOrWhiteSpace())
             return new BadRequestObjectResult(new { message = "No description" });
 
-        if(await _DescriptionManagerService.SaveDescription(model.MediaId, model.Description))
+        if(_DescriptionManagerService.SaveDescription(model.MediaId, model.Description))
         {
             await RemoveFromCache(model.MediaId);
             return new {
